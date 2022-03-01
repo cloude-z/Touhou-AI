@@ -2,8 +2,9 @@ import os
 import os.path
 
 def rename():
-    sample_root = [os.path.join(r".\Dataset\raw_screenshots", x) 
-        for x in os.listdir(r".\Dataset\raw_screenshots")]  # sample 目录列表
+    pic_root = os.path.join(".", "Dataset", "raw_screenshots")
+    sample_root = [os.path.join(pic_root, x) 
+        for x in os.listdir(pic_root)]  # sample 目录列表
 
     for e in sample_root:
         sample_old = os.listdir(e)

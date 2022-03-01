@@ -11,18 +11,20 @@ from torch.utils.data import DataLoader
 import os
 import os.path
 
-label_root = r".\Dataset\raw_labels"
-sample_root = [os.path.join(r".\Dataset\raw_screenshots", x) 
-    for x in os.listdir(r".\Dataset\raw_screenshots")]  # sample 目录列表
+if "__name__" == "__main__":
+    # Path of dataset
+    label_root = os.path.join(".", "Dataset", "raw_labels")
+    pic_root = os.path.join(".", "Dataset", "raw_screenshots")
+    sample_root = [os.path.join(pic_root, x)
+        for x in os.listdir(pic_root)]
 
 class LoadMyDataset(Dataset):
     """
     Load the dataset and do the specified transformations on it.
     """
-    def __init__(self, transforms=None, target_transforms=None):
-        self.sample_root = [os.path.join(r".\Dataset\raw_screenshots", x) 
-            for x in os.listdir(r".\Dataset\raw_screenshots")]  # sample 目录列表
-        self.label_root = r".\Dataset\raw_labels"
+    def __init__(self, sample_root, label_root, transforms=None, target_transforms=None):
+        self.sample_root = sample_root # sample 目录列表
+        self.label_root = label_root
         self.dataset = self.LoadData(self.sample_root, self.label_root) # 要能读取很多数据
         self.transforms = transforms
         self.target_transforms = target_transforms
