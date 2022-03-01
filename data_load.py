@@ -105,8 +105,8 @@ def data_preprocessing(samples, labels): # 预处理数据，将0向量数据删
 
     return samples, labels
 
-def data_load():
-    data = LoadMyDataset(transforms=None)
+def data_load(sample_root, label_root):
+    data = LoadMyDataset(sample_root, label_root, transforms=None)
     batch_size = 256
 
     train_nums = round(len(data)*0.8)
