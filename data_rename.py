@@ -11,6 +11,6 @@ def rename():
         nums = len(sample_new)
         for i in range(nums):
             old = os.path.join(e, sample_new[i])
-            os.rename(old, os.path.join(e, f"{i:03d}.jpg"))
+            os.rename(old, os.path.join(e, f"{i:04d}.jpg"))
 
 rename()
