@@ -29,9 +29,7 @@ class toho_CNN(nn.Module):
         )
         linear = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(256*5*3, 3840),
-            nn.ReLU(),
-            nn.Linear(3840, 1280),
+            nn.Linear(256*5*3, 1280),
             nn.ReLU(),
             nn.Linear(1280, 320),
             nn.ReLU(),
