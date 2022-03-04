@@ -31,7 +31,7 @@ class toho_CNN(nn.Module):
             nn.Flatten(),
             nn.Linear(3840, 3840),
             nn.ReLU(),
-            nn.Linear(3840, 1280), # 648
+            nn.Linear(3840, 1280),
             nn.ReLU(),
             nn.Linear(1280, 5)
         )
