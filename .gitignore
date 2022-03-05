@@ -3,6 +3,7 @@
 /Dataset/raw_screenshots/
 /.ipynb_checkpoints
 /.idea
+/__pycache__
 
 # images
 *.jpg
