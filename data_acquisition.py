@@ -7,6 +7,7 @@ import cv2
 import keyboard
 import csv
 
+
 def GetWindowList():
     """
     将当前桌面上窗口的标题名打印至屏幕。
@@ -14,10 +15,12 @@ def GetWindowList():
     """
     win32gui.EnumWindows(lambda x, L: print(win32gui.GetWindowText(x)), None)
 
+
 def WindowInit(WinName=None):
     """
-    查找目标窗口，返回该窗口的句柄与屏幕坐标值。
-    Find the target window and return the handle of the window with the value of window's coordinate.
+    查找目标窗口并使其高亮，返回该窗口的句柄与屏幕坐标值。
+    Find the target window and set it to the foreground. Return the
+    handle of the window with the value of window's coordinate.
     """
     if WinName == None:
         # WinName = "Python_Zettelkasten - Obsidian v0.12.19"
@@ -25,28 +28,33 @@ def WindowInit(WinName=None):
     else:
         WinName = WinName
     win_handle = win32gui.FindWindow(None, WinName)
-    
+
     try:
         locat = win32gui.GetWindowRect(win_handle)   # left, top, right, bottom: 左边框，上边框，右边框，下边框
         win32gui.SetForegroundWindow(win_handle)
     except Exception:   # 检查游戏是否运行。Check if the game is running.
         if win_handle == 0:
             print("未开启程序 -- 退出 --")
-            exit()
+            # exit()
     return locat, win_handle
 
+
 i = 0
+
+
 def ScreenShotCapture(locat):
     """
     保存游戏屏幕截图。
     Save a screenshot of the game.
     """
     global i
+
     Img = pyautogui.screenshot(region=(locat[0]+35, locat[1]+45, locat[2]-locat[0]-262, locat[3]-locat[1]-64))
     Img = cv2.cvtColor(np.asarray(Img), cv2.COLOR_RGB2BGR)
-    Img = cv2.resize(Img, (150,200))
-    cv2.imwrite('Dataset/Capture_10/'+ str(i) + '.jpg', Img)
+    Img = cv2.resize(Img, (150, 200))
+    cv2.imwrite('Dataset/Capture_10/' + str(i) + '.jpg', Img)
     i = i + 1
+
 
 def KeyboardListener():
     """
@@ -70,13 +78,6 @@ def KeyboardListener():
         csvwriter.writerow(key_list)
     print('\r' + str(key_list), end='')
 
-# 初始化截屏区域的坐标，窗口句柄。Initialize the coordinates of screenshot area and window's handle
-locat, win_handle = WindowInit()
-# 等待15s用于打开游戏。Wait 15s for opening the game.
-print('Waiting:', end='') 
-for l in range(14):
-    time.sleep(1)
-    print('.', end='.', flush=True)
 
 def DataAquisition(locat):
     """
@@ -86,9 +87,20 @@ def DataAquisition(locat):
     ScreenShotCapture(locat)
     KeyboardListener()
 
-# 
-keyboard.hook(lambda _: DataAquisition(locat))
-keyboard.wait('esc')
+
+if "__name__" == "__main__":
+
+    # 初始化截屏区域的坐标，窗口句柄。Initialize the coordinates of screenshot area and window's handle
+    locat, win_handle = WindowInit()
+    # 等待15s用于打开游戏。Wait 15s for opening the game.
+    print('Waiting:', end='')
+    for l in range(14):
+        time.sleep(1)
+        print('.', end='.', flush=True)
+
+    # 数据采集。Data acquisition
+    keyboard.hook(lambda _: DataAquisition(locat))
+    keyboard.wait('esc')
 
 # 获取桌面上的窗口列表 Get a list including all the names of current windows on the desktop.
 # GetWindowList()

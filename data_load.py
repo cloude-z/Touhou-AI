@@ -51,7 +51,7 @@ class LoadMyDataset(Dataset):
         
         # load the labels from .csv files and concatenate them in 2D tensor
         labels = pd.DataFrame()
-        # flag = 0
+#         flag = 0
         for i in sorted(os.listdir(label_root)):
             filename = os.path.join(label_root, i)
             temp = pd.read_csv(filename, header=None)
@@ -59,9 +59,9 @@ class LoadMyDataset(Dataset):
             labels = pd.concat([labels, temp], axis=0)
             
             # ===================ONLY FOR DEBUG===================
-            # flag += 1
-            # if flag == 1:
-            #     break
+#             flag += 1
+#             if flag == 1:
+#                 break
         
         labels = torch.FloatTensor(labels.values)
         print(f"labels matrix: {labels.shape}\n")
@@ -69,7 +69,7 @@ class LoadMyDataset(Dataset):
         # load the screenshot from each folder and concatenate them in 4D tensor, 
         # where the 1st dim refers to batch
         samples = []
-        # flag = 0
+#         flag = 0
         for i in sample_root:
             for j in sorted(os.listdir(i)):
                 filename = os.path.join(i, j)
@@ -79,9 +79,9 @@ class LoadMyDataset(Dataset):
                 print(f"\r{j} done!", end="")
             
             # ===================ONLY FOR DEBUG===================
-            # flag += 1
-            # if flag == 1:
-            #     break
+#             flag += 1
+#             if flag == 1:
+#                 break
         
         samples = torch.stack(samples)
         print(f"\n\nsamples matrix: {samples.shape}")
