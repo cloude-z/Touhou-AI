@@ -7,40 +7,61 @@ game. Just like when I get back to the old days and sat with my friends in front
 him or me playing the game, and chatting, having fun. So when I first time saw it is possible to train one own AI to 
 play some shit, it's like wow that's so awesome! So, why can't I do one by myself?
 
-But in the end, this is only a sample project for myself for kind of training, learning and there ain't too hard theory 
+But eventually, this is only a sample project for myself for kind of training, learning and there ain't too hard theory 
 or something behind it, so I just think there won't be too many guys visit. Here are therefore only some simple 
-introductions about the build-up and functions. (As for the end effect with some gifs and pics, I'll upload in the 
-future to let you, the visitors, can directly see what it finally seems to be like!)
+introductions about the build-up and functions. 
 
-## data_acquisition.py
+## Screenshot
+
+<video id="video" controls="" preload="none">
+    <source id="mp4" src="./video.mp4" type="video/mp4">
+</video>
+
+## Usage
+
+Download the code first and 'cuz the model was trained on Perfect Cherry Blossom (東方妖々夢, Tōhō Yōyōmu, lit. "Ghostly Dream"), the 7th game in the series of Touho Project. If you want to used the pre-trained `.pth` model in this repository, plz buy or download the game from somewhere you can :). Ofc, you can train your own model by oneself!
+
+```
+git clone https://github.com/bakalaugh/Toho-AI.git
+```
+#### Requirements
+|Package|Version|
+|:--|:--|
+|pytorch|1.9.0|
+|sklearn|-|
+|cv2|-|
+|pandas|-|
+|matplotlib|-|
+|pyautogui|-|
+|pywin32|-|
+|keyboard|-|
+
+#### TohoAI.py
+
+The real shit of TohoAI to play the game!
+
+## Train own model
+
+#### data_acquisition.py
 
 To acquire the datasets by oneself, which include the screenshots of game and the movements of keyboard serving as 
 labels. The function is achieved by the packages `win32gui`, `keyboard`, `cv2`, `pyautogui` etc. which I guess can be
 minimalized (some of them really redundant).
 
-## data_rename.py
+#### data_rename.py
 
 If one names the files in the sequence like `1.jpg, 2.jpg, ..., 10.jpg`. Finally when the files are read into a list or 
 tensor, the sequence will be changed to `1.jpg, 10.jpg, 11.jpg, ..., 2.jpg, ...`, which is caused by the naming rule 
-within the system I guess. The order will end up to be messed up. So, this file is to reorder the messed sequence 
-`1, 2, 3` to `0001, 0002, 0003`.
+within the system. The order will end up to be messed up. So, this file is to reorder the messed sequence 
+`1, 2, 3` to `0001, 0002, 0003` ('cuz I messed it up at the very first :( ).
 
-## data_load.py
+#### data_load.py
+#### model.py
+#### train_eval.py
 
-hmmm, it is data_load
+Some functions for model training and data feeding.
 
-## model.py
+#### CNN.ipynb
+#### CNN.py
 
-hmmm, it's model
-
-## train_eval.py
-
-Some function for model training
-
-## CNN.ipynb
-
-The model is actually trained and evaluated here because of the better visualization and modification.
-
-## TohoAI
-
-The real shit of TohoAI!
+The model is actually trained and evaluated in `.ipynb` file because of the better visualization and modification. If needed, one can use `CNN.py` as alternative.

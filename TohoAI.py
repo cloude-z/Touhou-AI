@@ -30,7 +30,7 @@ def PressAndRelease(key, MapVirtualKey=MapVirtualKey):
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else 'cpu')
-# print("Using device: {}".format(device))
+print("Using device: {}".format(device))
 
 # Load the pre-trained model
 CNN_model = model.toho_CNN()
@@ -71,3 +71,4 @@ while True:
     win32api.keybd_event(0x5A, MapVirtualKey(0x5A, 0), 0, 0)
     time.sleep(0.01)
     win32api.keybd_event(0x5A, MapVirtualKey(0x5A, 0), win32con.KEYEVENTF_KEYUP, 0)
+
