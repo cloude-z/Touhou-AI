@@ -13,6 +13,8 @@ introductions about the build-up and functions.
 
 ## Screenshot
 
+One can check `video.mp4` file, I don't know why Github can't play video.
+
 <video src="./video.mp4" controls="controls" width="480" height="640"></video>
 
 ## Usage
