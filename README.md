@@ -13,9 +13,7 @@ introductions about the build-up and functions.
 
 ## Screenshot
 
-<video id="video" controls="" preload="none">
-    <source id="mp4" src="./video.mp4" type="video/mp4">
-</video>
+<video src="./video.mp4" controls="controls" width="480" height="640"></video>
 
 ## Usage
 
@@ -38,7 +36,7 @@ git clone https://github.com/bakalaugh/Toho-AI.git
 
 #### TohoAI.py
 
-The real shit of TohoAI to play the game!
+The real shit of TohoAI to play the game! Open the game first, then run `TohoAI.py` it will let you play the game automatically.
 
 ## Train own model
 
