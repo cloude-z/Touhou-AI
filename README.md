@@ -15,7 +15,7 @@ introductions about the build-up and functions.
 
 One can check `video.mp4` file, I don't know why Github can't play video.
 
-<video src="./video.mp4" controls="controls" width="480" height="640"></video>
+<video src="https://github.com/bakalaugh/Toho-AI/blob/master/video.mp4" controls="controls" width="480" height="640"></video>
 
 ## Usage
 
