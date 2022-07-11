@@ -18,7 +18,6 @@ One can check `video.mp4` file, I don't know why Github can't play video.
 ![GIF](https://github.com/bakalaugh/Toho-AI/blob/master/gif_1.gif)
 ![GIF](https://github.com/bakalaugh/Toho-AI/blob/master/gif_2.gif)
 
-
 ## Usage
 
 Download the code first and 'cuz the model was trained on Perfect Cherry Blossom (東方妖々夢, Tōhō Yōyōmu, lit. "Ghostly Dream"), the 7th game in the series of Touho Project. If you want to used the pre-trained `.pth` model in this repository, plz buy or download the game from somewhere you can :). Ofc, you can train your own model by oneself!
